@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Child from './Child';
 
-function App() {
+const App = (props) => {
+  const [Input, setInput] = useState({text1: "" , text2 : ""});
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='parent'>
+
+      <div className='display'><span><Child Input = {Input} setInput={setInput} /></span><br /></div>
+      <form>
+        <h3>parent component</h3>
+        <input type="text" name="output1" value={Input.text1} id="output1" /> &nbsp;    &nbsp;
+        <input type="text" name="output2" value={Input.text2} id="output2" />
+      </form>
     </div>
   );
 }
 
-export default App;
+export default App;    
