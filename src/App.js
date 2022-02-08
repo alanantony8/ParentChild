@@ -1,33 +1,36 @@
 import React, { useState } from 'react';
-import TextField from "@material-ui/core/TextField";
 import Child from './Child';
+import HOC from './HOC';
 
 const App = (props) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+
+
+  const FieldData = [{
+    type: 'email',
+    name: 'email',
+    id: 'email1',
+    placeholder: 'Enter the Mail ID'
+  },
+  {
+    type: 'password',
+    name: 'password',
+    id: 'password1',
+    placeholder: 'Enter the Password'
+  },
+  {
+    type: 'number',
+    name: 'mobile',
+    id: 'mobile',
+    placeholder: 'Enter the Mobile Number'
+  }];
+
+  // const Hoc = HOC(Child,
+  //   FieldData
+  // );
 
   return (
     <div>
-      {/* <div className='display'><span><Child  setName={setName} /></span><br /></div> */}
-      <TextField
-        name='password'
-        label={'Enter your password'}
-        type={'password'}
-        value="Alan"
-        onChange={(e) => {
-          setName(e.target.value);
-        }}
-      />
-      
-      <TextField
-        name='email'
-        label={'Enter your email'}
-        type={'text'}
-        value={email}
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
-      />
+      <HOC Child={Child} FieldData={FieldData}/>
       
     </div>
   );
@@ -66,4 +69,4 @@ const App = (props) => {
 
 
 
-export default App;    
+export default App;
