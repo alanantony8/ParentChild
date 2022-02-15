@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import axios from "axios";
+import React, { useState ,useEffect} from "react";
+import Output from "./output";
+import Book from "./book";
+import Verses from "./verses";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+
+const App = () =>{
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <>
+    {/* <Router> */}
+    
+    {/* <> */}
+    {/* <Input setPlace={setPlace} /> */}
+    {/* <Book data={data}/>
+    <Output data={data}/>
+     */}
 
+           {/* <Switch>
+          <Route path="/Output">
+            <Output />
+          </Route>
+        </Switch>
+    
+    
+    </Router> */}
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Book />} />
+      <Route path="/chapters/:chapter" element={<Output />} />
+      <Route path="/verses/:lines" element={<Verses />} />
+
+      {/* <Route path="expenses" element={<Expenses />} />
+      <Route path="invoices" element={<Invoices />} /> */}
+      <Route
+      path="*"
+      element={
+        <main style={{ padding: "1rem" }}>
+          <p>There's nothing here!</p>
+        </main>
+      }
+    />
+    </Routes>
+    
+  </BrowserRouter>,
+    </>
+    
+  )
+}
 export default App;
+
